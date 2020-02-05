@@ -1,0 +1,6 @@
+---
+# tasks file for role_installation_docker
+- name: installation docker
+  yum:
+   name: docker
+   state: present

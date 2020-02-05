@@ -1,0 +1,12 @@
+[Unit]
+Description=Démon Jenkins
+After=network.target
+
+[Service]
+Type=simple
+Environment="JENKINS_HOME=/home/jenkins"
+ExecStart=/usr/bin/java -jar /usr/lib/jenkins/jenkins.war
+User=jenkins
+
+[Install]
+WantedBy=multi-user.target

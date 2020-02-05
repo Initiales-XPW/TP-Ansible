@@ -1,0 +1,12 @@
+---
+# tasks file for role_installation_apache
+- name: installation apache
+  yum:
+   name: httpd
+   state: present
+- name: copie du template config_port_http.template
+  template:
+   src: config_port_http.template
+   dest: /etc/httpd/conf/httpd.conf
+  notify:
+   - restart httpd

@@ -1,0 +1,6 @@
+---
+# tasks file for role_installation_tomcat
+- name: installation tomcat
+  yum:
+   name: tomcat
+   state: present

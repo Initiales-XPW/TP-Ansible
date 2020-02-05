@@ -1,0 +1,7 @@
+---
+# handlers file for role_installation_apache
+- name: redémarrage du service httpd
+  service:
+   name: httpd
+   state: restarted
+  listen: "restart httpd"

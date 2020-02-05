@@ -1,0 +1,20 @@
+---
+# tasks file for role_installation_artifactory
+
+- name: création de l'arborescence artifactory
+  file:
+   path: /usr/lib/artifactory
+   state: directory
+   mode: '0755'
+- name: téléchargement d'artifactory
+  get_url:
+   url: https://api.bintray.com/content/jfrog/artifactory-rpms/jfrog-artifactory-oss-$latest.rpm;bt_package=jfrog-artifactory-oss-rpm
+   dest: /root/jfrog-artifactory.rpm
+- name: installation d'artifactory
+  yum:
+   name: /root/jfrog-artifactory.rpm
+   state: present
+- name: suppression du fichier téléchargé
+  file:
+   path: /root/jfrog-artifactory.rpm
+   state: absent 

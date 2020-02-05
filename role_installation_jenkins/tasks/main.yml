@@ -1,0 +1,36 @@
+---
+# tasks file for role_installation_jenkins
+- name: création de l'arborescence jenkins
+  file:
+   path: /usr/lib/jenkins
+   state: directory
+   mode: '0755'
+- name: téléchargement de jenkins
+  get_url:
+   url: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+   dest: /usr/lib/jenkins/jenkins.war
+- name: création du groupe utilisateur jenkins
+  group:
+   name: jenkins
+   state: present
+- name: création de l'utilisateur jenkins
+  user:
+   name: jenkins
+   group: jenkins
+   password: "{{ mot_de_passe }}"
+   state: present
+   system: yes
+   home: /home/jenkins
+   create_home: yes
+- name: création du service jenkins
+  template:
+   src: jenkins.service.template
+   dest: /etc/systemd/system/jenkins.service
+- name: rechargement des configurations des démons
+  systemd:
+   daemon_reload: yes
+- name: démarrage du service jenkins
+  systemd:
+   name: jenkins
+   state: restarted
+   enabled: yes 

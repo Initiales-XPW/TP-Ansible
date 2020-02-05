@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  become: yes
+  roles:
+   - role_installation_java
+   - role_installation_apache
+   - role_installation_jenkins
+   - role_installation_artifactory
+   - role_installation_tomcat
+   - role_installation_docker
