@@ -1,0 +1,8 @@
+---
+- name: restart démon http
+  service:
+    name: httpd
+    state: restarted
+  listen: "restart apache"
+
+# handlers file for role-ansible-formation-DevOps

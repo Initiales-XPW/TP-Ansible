@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  become: yes
+  vars:
+    porc: '8080'
+
+  tasks:
+    - name: Appel du fichier modèle de la configuration http d'apache
+      template:
+        src: /data/ansible/ansible/httpd.conf.template
+        dest: /etc/httpd/conf/httpd.conf
+      notify:
+        - restart apache
+  handlers:
+  - name: restart démon http
+    service:
+      name: httpd
+      state: restarted
+    listen: "restart apache"

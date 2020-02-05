@@ -1,0 +1,9 @@
+---
+# tasks file for role_ssh
+- name: Copie d'un fichier quelconque
+  copy:
+    src: /data/ansible/ansible/version_git.txt
+    dest: /data/ansible/version_git.txt
+    owner: ansible
+    group: ansible
+    mode: 770

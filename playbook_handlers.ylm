@@ -1,0 +1,4 @@
+
+sts: localhost
+  become: yes
+  vars:

@@ -1,0 +1,4 @@
+apache1 ansible_port=2224 ansible_host=192.168.1.146
+
+[apache]
+apache1

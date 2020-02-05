@@ -1,0 +1,4 @@
+- hosts: copieFichier
+  become: yes
+  roles: 
+    - role_ssh

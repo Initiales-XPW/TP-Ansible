@@ -1,0 +1,8 @@
+---
+# tasks file for role-ansible-formation-DevOps
+- name: Appel du fichier modèle de la configuration http d'apache
+  template:
+    src: httpd.conf.template
+    dest: /etc/httpd/conf/httpd.conf
+  notify:
+    - restart apache

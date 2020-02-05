@@ -1,0 +1,27 @@
+---
+- hosts:    127.0.0.1
+  become:    yes
+  vars:
+    target_service: httpd
+    target_state: reloaded
+  tasks:
+  - name: Ensure target service is at target state
+    service:
+      name: "{{ target_service }}"
+      state: "{{ target_state }}"
+  - name:    Install httpd
+    yum:
+     name:    httpd
+     state:    latest
+  - name:    Create index.html file
+    file:
+     name:    /var/www/html/index.html
+     state:    touch
+  - name:    Add web content
+    lineinfile:
+     line:    "Toto est le plus beau ;-) ."
+     path:    /var/www/html/index.html
+  - name:
+    service:
+     name:    httpd
+     state:    "{{ target_state }}"

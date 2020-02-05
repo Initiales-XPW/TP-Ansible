@@ -1,0 +1,10 @@
+---
+- hosts:    127.0.0.1
+  become: yes
+  tasks:
+  - name: remplacement port HTTP
+    shell: sed -i 's/^Listen.*/Listen 8080/' /etc/httpd/conf/httpd.conf
+  - name: Reload httpd
+    service:
+      name: httpd
+      state: restarted
