@@ -8,7 +8,7 @@
    mode: '0755'
 - name: téléchargement d'artifactory
   get_url:
-   url: https://api.bintray.com/content/jfrog/artifactory-rpms/jfrog-artifactory-oss-$latest.rpm;bt_package=jfrog-artifactory-oss-rpm
+   url: https://jfrog.bintray.com/artifactory-rpms/jfrog-artifactory-oss-6.17.0.rpm
    dest: /root/jfrog-artifactory.rpm
 - name: installation d'artifactory
   yum:
